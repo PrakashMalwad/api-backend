@@ -3,7 +3,6 @@ const auth = require("../middleware/auth");
 const { createCollection, getCollections, getUserCollections, runCollection, updateCollection, deleteCollection,addRequestToCollection
 } = require("../controllers/apicontroller");
 const router = express.Router();
-const auth = require("../middleware/auth");
 
 router.post("/collections",
 auth,
