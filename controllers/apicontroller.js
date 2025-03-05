@@ -30,7 +30,16 @@ exports.getCollections = async (req, res) => {
   }
 };
 
-
+//user specific collection
+exports.getUserCollections = async (req, res) => {
+  try {
+    const collections = await ApiCollection.find({ user: req.user.id });
+    res.json(collections);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching collections", error });
+  }
+};
+  
 exports.updateCollection = async (req, res) => {
   try {
     console.log("Updating collection:", req.params.id);

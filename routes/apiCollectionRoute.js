@@ -1,13 +1,14 @@
 const express = require("express");
 const auth = require("../middleware/auth");
-const { createCollection, getCollections, runCollection, updateCollection, deleteCollection,addRequestToCollection
+const { createCollection, getCollections, getUserCollections, runCollection, updateCollection, deleteCollection,addRequestToCollection
 } = require("../controllers/apicontroller");
 const router = express.Router();
+const auth = require("../middleware/auth");
 
 router.post("/collections",
 auth,
     createCollection);
-router.get("/collections", getCollections);
+router.get("/collections", auth, getUserCollections);
 router.get("/collections/:id", getCollections);
 router.put("/collections/:id", updateCollection);
 router.post("/collections/add/:collectionid", addRequestToCollection);
